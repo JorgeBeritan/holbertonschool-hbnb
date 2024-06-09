@@ -14,4 +14,3 @@ class BaseClass(ABC):
             self.__update_at = datetime.now()
             return func(self, *args, **kwargs)
         return wrapper_set_time
-    

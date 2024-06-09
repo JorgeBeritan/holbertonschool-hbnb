@@ -31,3 +31,18 @@ class City():
     @property
     def update_at(self):
         return self.__update_at
+    
+    @Name.setter
+    def Name(self, Name):
+        if type(Name) is not str:
+            raise TypeError("Name must be a string")
+        elif Name is None:
+            raise ValueError("Name is required")
+        self.__Name = Name
+    
+    @Country_code.setter
+    def Country_code(self, Country_code):
+        if Country_code is None:
+            raise ValueError("Country code is required")
+        self.__Country_code = Country_code
+    

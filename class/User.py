@@ -36,3 +36,23 @@ class User():
     @property
     def update_at(self):
         return self.__update_at
+    
+    @Email.setter
+    def Email(self, Email):
+        pass
+
+    @First_name.setter
+    def First_name(self, First_name):
+        if type(First_name) is not str:
+            raise TypeError("First name must be a string")
+        elif First_name is None:
+            raise ValueError("First name is requerid")
+        self.__First_name = First_name
+
+    @Last_name.setter
+    def Last_name(self, Last_name):
+        if type(Last_name) is not str:
+            raise TypeError("Last name must be a string")
+        elif Last_name is None:
+            raise ValueError("Last name is requerid")
+        self.__Last_name = Last_name
