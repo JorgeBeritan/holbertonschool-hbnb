@@ -2,6 +2,8 @@
 import sys
 sys.path.append("/workspaces/holbertonschool-hbnb/class")
 import unittest
+import datetime
+import uuid
 from Place import Place
 
 class TestPlaceClass(unittest.TestCase):
@@ -98,4 +100,20 @@ class TestPlaceClass(unittest.TestCase):
         with self.assertRaises(ValueError):
             Place("Hotel", "Esta bueno el Hotel", 4, 3, 20, -200.0, 24.6, 25.7)
 
-        
+    def test_create_at(self):
+        self.assertTrue(isinstance(self.p1.create_at, datetime.datetime))
+
+    def test_update_at(self):
+        self.assertTrue(isinstance(self.p1.update_at, datetime.datetime))
+
+    def test_id(self):
+        self.assertTrue(isinstance(self.p1.id, uuid.UUID))
+
+    def test_host_id(self):
+        self.assertTrue(isinstance(self.p1.host_id, uuid.UUID))
+
+    def test_city_id(self):
+        self.assertTrue(isinstance(self.p1.city_id, uuid.UUID))
+
+    def test_amenity_id(self):
+        self.assertTrue(isinstance(self.p1.amenity_id, uuid.UUID))
