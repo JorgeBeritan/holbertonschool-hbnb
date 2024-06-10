@@ -1,23 +1,24 @@
 #!/usr/bin/python3
-
+from datetime import datetime
+import uuid
 class Place:
 
 
-    def __init__(self, id, host_id, name, description, number_of_rooms, number_of_bathrooms, max_guest, price_per_night, latitude, longitude, city_id, amenity_id):
-        self.id = id
-        self.host_id = host_id
+    def __init__(self, name, description, number_of_rooms, number_of_bathrooms, max_guest, price_per_night, latitude, longitude):
+        self.__id = uuid.uuid4()
+        self.__host_id = uuid.uuid4()
         self.name = name
         self.description = description
-        self.numbert_of_rooms = number_of_rooms
+        self.number_of_rooms = number_of_rooms
         self.number_of_bathrooms = number_of_bathrooms
         self.max_guest = max_guest
         self.price_per_night = price_per_night
         self.latitude = latitude
         self.longitude = longitude
-        self.city_id = city_id
-        self.amenity_id = amenity_id
-        self.create_at = "2024-05-10"
-        self.update_at = "2024-05-19"
+        self.city_id = uuid.uuid4()
+        self.amenity_id = uuid.uuid4()
+        self.create_at = datetime.now()
+        self.update_at = datetime.now()
 
     @property
     def id(self):
@@ -77,17 +78,17 @@ class Place:
 
     @id.setter
     def id(self):
-        pass
+        self.__id = self.id
 
     @host_id.setter
     def host_id(self):
-        pass
+        self.__host_id = self.host_id
 
     @name.setter
     def name(self, name):
         if type(name) is not str:
             raise TypeError("Name must be a string")
-        elif name == None:
+        elif name == "":
             raise ValueError("Name is requerid")
         self.__name = name
     
@@ -95,7 +96,7 @@ class Place:
     def description(self, description):
         if type(description) is not str:
             raise TypeError("Description must be a string")
-        if description == None:
+        if description == "":
             raise ValueError("Description is required")
         
         self.__description = description
@@ -126,8 +127,8 @@ class Place:
 
     @price_per_night.setter
     def price_per_night(self, price_per_night):
-        if type(price_per_night) is not int:
-            raise TypeError("Price per night must be an integer")
+        if type(price_per_night) is not float:
+            raise TypeError("Price per night must be a float")
         if price_per_night < 0:
             raise ValueError("Price per night must be  a positive number")
         self.__price_per_night = price_per_night
@@ -145,8 +146,17 @@ class Place:
         self.__longitude = longitude
     
     @city_id.setter
-    def city_id(self, city_id):
-        pass
+    def city_id(self, value):
+        self.__city_id = value
     @amenity_id.setter
-    def amenity_id(self, amenity_id):
-        pass
+    def amenity_id(self, value):
+        self.__amenity_id = value
+
+    @create_at.setter
+    def create_at(self, value):
+        self.__create_at = value
+
+    @update_at.setter
+    def update_at(self, value):
+        self.__update_at = value
+
