@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+from datetime import datetime
+import uuid
 """
 definimos las clases
 """
@@ -6,11 +8,11 @@ definimos las clases
 
 class City():
     def __init__(self, ID, Name, Country_code, Create_at, Update_at):
-        self.ID = ID
+        self.ID = uuid.uuid4
         self.Name = Name
         self.Country_code = Country_code 
-        self.Create_at = Create_at
-        self.Update_at = Update_at
+        self.Create_at = datetime.now()
+        self.Update_at = datetime.now()
     
     @property
     def ID(self):
