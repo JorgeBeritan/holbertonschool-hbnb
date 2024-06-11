@@ -1,12 +1,13 @@
 #!/usr/bin/python3
 from datetime import datetime
 import uuid
+from User import User
 class Place:
 
 
-    def __init__(self, name, description, number_of_rooms, number_of_bathrooms, max_guest, price_per_night, latitude, longitude):
+    def __init__(self, name, description, number_of_rooms, number_of_bathrooms, max_guest, price_per_night, latitude, longitude, host_id):
         self.__id = uuid.uuid4()
-        self.__host_id = uuid.uuid4()
+        self.__host_id = host_id
         self.name = name
         self.description = description
         self.number_of_rooms = number_of_rooms
@@ -81,8 +82,10 @@ class Place:
         self.__id = self.id
 
     @host_id.setter
-    def host_id(self):
-        self.__host_id = self.host_id
+    def host_id(self, host_id):
+        if type(host_id) is not uuid.UUID:
+            raise TypeError("Must be a unique host id")
+        self.__host_id = host_id
 
     @name.setter
     def name(self, name):
@@ -159,4 +162,3 @@ class Place:
     @update_at.setter
     def update_at(self, value):
         self.__update_at = value
-
