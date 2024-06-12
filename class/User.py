@@ -3,11 +3,12 @@
 definimos las clases
 """
 import uuid
+from validator import validator_email
 
 class User():
-    def __init__(self, Email, First_name, Last_name):
+    def __init__(self, email, First_name, Last_name):
         self.ID = uuid.uuid4()
-        self.Email = Email
+        self.email = email
         self.First_name = First_name
         self.Last_name = Last_name
         #self.Create_at = Create_at
@@ -18,8 +19,8 @@ class User():
         return self.__ID
     
     @property
-    def Email(self):
-        return self.__Email
+    def email(self):
+        return self.__email
     
     @property
     def First_name(self):
@@ -41,12 +42,14 @@ class User():
     def ID(self, ID):
         self.__ID = ID
     
-    @Email.setter
-    def Email(self, Email):
-        if type(Email) is not str:
+    @email.setter
+    def email(self, email):
+        if type(email) is not str:
             raise TypeError("The email user must be a string")
-        self.__Email = Email
-
+        if not validator_email(email):
+            raise ValueError("The email is not valid")
+        else:
+            self.__email = email
 
     @First_name.setter
     def First_name(self, First_name):
