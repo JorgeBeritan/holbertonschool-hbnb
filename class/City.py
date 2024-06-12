@@ -7,8 +7,8 @@ definimos las clases
 
 
 class City():
-    def __init__(self, ID, Name, Country_code, Create_at, Update_at):
-        self.ID = uuid.uuid4
+    def __init__(self, Name, Country_code):
+        self.ID = uuid.uuid4()
         self.Name = Name
         self.Country_code = Country_code 
         self.Create_at = datetime.now()
@@ -16,15 +16,15 @@ class City():
     
     @property
     def ID(self):
-        return self.ID
+        return self.__ID
     
     @property
     def Name(self):
-        return self.Name
+        return self.__Name
     
     @property
     def Country_code(self):
-        return self.Country_code
+        return self.__Country_code
     
     @property
     def create_at(self):
@@ -33,6 +33,12 @@ class City():
     @property
     def update_at(self):
         return self.__update_at
+    
+    @ID.setter
+    def ID(self, ID):
+        if type(ID) is not uuid.UUID:
+            raise TypeError("The ID must be a uuid.UUID")
+        self.__ID = ID
     
     @Name.setter
     def Name(self, Name):
