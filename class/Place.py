@@ -1,11 +1,13 @@
 #!/usr/bin/python3
+
+
 from datetime import datetime
 import uuid
 from User import User
 class Place:
 
 
-    def __init__(self, name, description, number_of_rooms, number_of_bathrooms, max_guest, price_per_night, latitude, longitude, host_id):
+    def __init__(self, name, description, number_of_rooms, number_of_bathrooms, max_guest, price_per_night, latitude, longitude, host_id, city_id):
         self.__id = uuid.uuid4()
         self.__host_id = host_id
         self.name = name
@@ -16,7 +18,7 @@ class Place:
         self.price_per_night = price_per_night
         self.latitude = latitude
         self.longitude = longitude
-        self.city_id = uuid.uuid4()
+        self.city_id = city_id
         self.amenity_id = uuid.uuid4()
         self.create_at = datetime.now()
         self.update_at = datetime.now()
@@ -46,7 +48,7 @@ class Place:
         return self.__number_of_bathrooms
     
     @property
-    def max_gues(self):
+    def max_guest(self):
         return self.__max_guest
 
     @property
@@ -120,7 +122,7 @@ class Place:
             raise ValueError("Number of bathrooms must be >= 0")
         self.__number_of_bathrooms = number_of_bathrooms
     
-    @max_gues.setter
+    @max_guest.setter
     def max_guest(self, max_guest):
         if type(max_guest) is not int:
             raise TypeError("Max guest must be an integer")
@@ -150,6 +152,8 @@ class Place:
     
     @city_id.setter
     def city_id(self, value):
+        if type(value) is not uuid.UUID:
+            raise TypeError("The id must be a uuid.UUID")
         self.__city_id = value
     @amenity_id.setter
     def amenity_id(self, value):
