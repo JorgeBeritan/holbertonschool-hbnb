@@ -2,42 +2,78 @@
 """
 definimos las clases
 """
+import uuid
+
+class Review:
+
+    def __init__(self, place_id, user_id, rating, comment):
+        self.review = uuid.uuid4()
+        self.place_id = place_id
+        self.user_id = user_id
+        self.rating = rating
+        self.comment = comment
+        #self.create_at = datetime.now()
+        #self.update_at = datetime.now()
 
 
-class Review():
-    def __init__(self, Review, Place_id, User_id, Rating, Comment, Create_at, Update_at):
-        self.Review = Review
-        self.Place_id = Place_id
-        self.User_id = User_id
-        self.Rating = Rating
-        self.Comment = Comment
-        self.Create_at = Create_at
-        self.Update_at = Update_at
+    @property
+    def review(self):
+        return self.__review
     
     @property
-    def Review(self):
-        return self.Review
+    def place_id(self):
+        return self.__place_id
+
+    @property
+    def user_id(self):
+        return self.__user_id
     
     @property
-    def Place_id(self):
-        return self.Place_id
+    def rating(self):
+        return self.__rating
     
     @property
-    def User_id(self):
-        return self.User_id
+    def comment(self):
+        return self.__comment
+
+    @review.setter
+    def review(self, value):
+        if type(value) is not uuid.UUID:
+            raise TypeError("The review ID must be a type uuid.UUID")
+
+        self.__review = value
+
+    @place_id.setter
+    def place_id(self, value):
+        if type(value) is not uuid.UUID:
+            raise TypeError("The type of place_id must be a uuid.UUID")
+
+        self.__place_id = value
     
-    @property
-    def Rating(self):
-        return self.Rating
+    @user_id.setter
+    def user_id(self, value):
+        if type(value) is not uuid.UUID:
+            raise TypeError("The type of user_id must be a uuid.UUID")
     
-    @property
-    def Comment(self):
-        return self.Comment
-    
-    @property
-    def create_at(self):
-        return self.__create_at
-    
-    @property
-    def update_at(self):
-        return self.__update_at
+        self.__user_id = value
+
+    @rating.setter
+    def rating(self, value):
+        if type(value) is not int:
+            raise TypeError("The rating must be a int")
+        if value != range(10):
+            raise ValueError("The rating of a place is from 0 to 10")
+
+        self.__rating = value
+
+    @comment.setter
+    def comment(self, value):
+        if type(value) is not str:
+            raise TypeError("The comment must be a string")
+        self.__comment = value
+
+
+
+
+
+

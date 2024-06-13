@@ -6,6 +6,7 @@ import uuid
 from User import User
 class Place:
 
+    __host_ids = set()
 
     def __init__(self, name, description, number_of_rooms, number_of_bathrooms, max_guest, price_per_night, latitude, longitude, host_id, city_id):
         self.__id = uuid.uuid4()
@@ -87,6 +88,9 @@ class Place:
     def host_id(self, host_id):
         if type(host_id) is not uuid.UUID:
             raise TypeError("Must be a unique host id")
+        if host_id in self.__host_ids:
+            raise ValueError("This Host Id is already exists")
+        self.__host_ids.add(host_id)
         self.__host_id = host_id
 
     @name.setter
