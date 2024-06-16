@@ -7,7 +7,6 @@ from City import City
 from Country import Country
 import unittest
 import datetime
-import uuid
 
 
 class TestPlaceClass(unittest.TestCase):
@@ -16,8 +15,8 @@ class TestPlaceClass(unittest.TestCase):
         self.c1 = City("Matanzas", "CU")
         self.u1 = User("Jorge@gmail.com", "Jorge", "Beritan")
         self.u2 = User("Nico@gmail.com", "Nico", "Bonilla")
-        self.p1 = Place("Hotel", "Esta bueno el Hotel", 4, 3, 20, 200.0, 24.6, 25.7, self.u1.ID, self.c1.ID)
-        self.p2 = Place("Hotel", "Esta bueno el Hotel", 4, 3, 20, 200.0, 24.6, 25.7, self.u2.ID, self.c1.ID)
+        self.p1 = Place("Hotel", "Esta bueno el Hotel", 4, 3, 20, 200.0, 24.6, 25.7, self.u1.id, self.c1.id)
+        self.p2 = Place("Hotel", "Esta bueno el Hotel", 4, 3, 20, 200.0, 24.6, 25.7, self.u2.id, self.c1.id)
 
 
     def test_name(self):
@@ -49,66 +48,66 @@ class TestPlaceClass(unittest.TestCase):
     
     def test_name_exception(self):
         with self.assertRaises(TypeError):
-            Place(123, "Esta bueno el Hotel", 4, 3, 20, 200.0, 24.6, 25.7, self.u1.ID, self.c1.ID)
+            Place(123, "Esta bueno el Hotel", 4, 3, 20, 200.0, 24.6, 25.7, self.u1.id, self.c1.id)
 
     def test_name_exception_none(self):
         with self.assertRaises(ValueError):
-            Place("","Esta bueno el Hotel", 4, 3, 20, 200.0, 24.6, 25.7, self.u1.ID, self.c1.ID)
+            Place("","Esta bueno el Hotel", 4, 3, 20, 200.0, 24.6, 25.7, self.u1.id, self.c1.id)
 
     def test_description_bool(self):
         self.assertTrue(isinstance(self.p1.description, str))
 
     def test_description_exception(self):
         with self.assertRaises(TypeError):
-            Place("Hotel", 123, 4, 3, 20, 200.0, 24.6, 25.7, self.u1.ID, self.c1.ID)
+            Place("Hotel", 123, 4, 3, 20, 200.0, 24.6, 25.7, self.u1.id, self.c1.id)
 
     def test_description_exception_none(self):
         with self.assertRaises(ValueError):
-            Place("Hotel", "", 4, 3, 20, 200.0, 24.6, 25.7, self.u1.ID, self.c1.ID)
+            Place("Hotel", "", 4, 3, 20, 200.0, 24.6, 25.7, self.u1.id, self.c1.id)
 
     def test_number_of_rooms_bool(self):
         self.assertTrue(isinstance(self.p1.number_of_rooms, int))
 
     def test_number_of_rooms_exception(self):
         with self.assertRaises(TypeError):
-            Place("Hotel", "Esta bueno el Hotel", "4", 3, 20, 200.0, 24.6, 25.7, self.u1.ID, self.c1.ID)
+            Place("Hotel", "Esta bueno el Hotel", "4", 3, 20, 200.0, 24.6, 25.7, self.u1.id, self.c1.id)
 
     def test_number_of_rooms_exception_negative(self):
         with self.assertRaises(ValueError):
-            Place("Hotel", "Esta bueno el Hotel", -4, 3, 20, 200.0, 24.6, 25.7, self.u1.ID, self.c1.ID)
+            Place("Hotel", "Esta bueno el Hotel", -4, 3, 20, 200.0, 24.6, 25.7, self.u1.id, self.c1.id)
 
     def test_number_of_bathrooms_bool(self):
         self.assertTrue(isinstance(self.p1.number_of_bathrooms, int))
     
     def test_numbert_of_bathrooms_exception(self):
         with self.assertRaises(TypeError):
-            Place("Hotel", "Esta bueno el Hotel", 4, "3", 20, 200.0, 24.6, 25.7, self.u1.ID, self.c1.ID)
+            Place("Hotel", "Esta bueno el Hotel", 4, "3", 20, 200.0, 24.6, 25.7, self.u1.id, self.c1.id)
 
     def test_numbert_of_bathrooms_exception_negative(self):
         with self.assertRaises(ValueError):
-            Place("Hotel", "Esta bueno el Hotel", 4, -3, 20, 200.0, 24.6, 25.7, self.u1.ID, self.c1.ID)
+            Place("Hotel", "Esta bueno el Hotel", 4, -3, 20, 200.0, 24.6, 25.7, self.u1.id, self.c1.id)
 
     def test_max_guest_bool(self):
         self.assertTrue(isinstance(self.p1.max_guest, int))
 
     def test_max_guest_exception(self):
         with self.assertRaises(TypeError):
-            Place("Hotel", "Esta bueno el Hotel", 4, 3, "20", 200.0, 24.6, 25.7, self.u1.ID, self.c1.ID)
+            Place("Hotel", "Esta bueno el Hotel", 4, 3, "20", 200.0, 24.6, 25.7, self.u1.id, self.c1.id)
 
     def test_max_guest_exception_negative(self):
         with self.assertRaises(ValueError):
-            Place("Hotel", "Esta bueno el Hotel", 4, 3, -20, 200.0, 24.6, 25.7, self.u1.ID, self.c1.ID)
+            Place("Hotel", "Esta bueno el Hotel", 4, 3, -20, 200.0, 24.6, 25.7, self.u1.id, self.c1.id)
 
     def test_price_per_night_bool(self):
         self.assertTrue(isinstance(self.p1.price_per_night, float))
 
     def test_price_per_night_exception(self):
         with self.assertRaises(TypeError):
-            Place("Hotel", "Esta bueno el Hotel", 4, 3, 20, "200.0", 24.6, 25.7, self.u1.ID, self.c1.ID)
+            Place("Hotel", "Esta bueno el Hotel", 4, 3, 20, "200.0", 24.6, 25.7, self.u1.id, self.c1.id)
 
     def test_price_per_night_exception_negative(self):
         with self.assertRaises(ValueError):
-            Place("Hotel", "Esta bueno el Hotel", 4, 3, 20, -200.0, 24.6, 25.7, self.u1.ID, self.c1.ID)
+            Place("Hotel", "Esta bueno el Hotel", 4, 3, 20, -200.0, 24.6, 25.7, self.u1.id, self.c1.id)
 
     def test_create_at(self):
         self.assertTrue(isinstance(self.p1.create_at, datetime.datetime))
@@ -132,19 +131,19 @@ class TestPlaceClass(unittest.TestCase):
         self.assertTrue(self.p1.id, self.p2.id)
 
     def test_unique_host_id_and_host_id_place(self):
-        self.assertEqual(self.p1.host_id, self.u1.ID)
+        self.assertEqual(self.p1.host_id, self.u1.id)
 
     def test_unique_host_id_and_host_id_place_2(self):
-        self.assertEqual(self.p2.host_id, self.u2.ID)
+        self.assertEqual(self.p2.host_id, self.u2.id)
     
     def test_unique_id_user(self):
-        self.assertNotEqual(self.u1.ID, self.u2.ID)
+        self.assertNotEqual(self.u1.id, self.u2.id)
 
     def test_unique_id_user1_bool(self):
-        self.assertTrue(isinstance(self.u1.ID, uuid.UUID))
+        self.assertTrue(isinstance(self.u1.id, str))
     
     def test_unique_id_user2_bool(self):
-        self.assertTrue(isinstance(self.u2.ID, uuid.UUID))
+        self.assertTrue(isinstance(self.u2.id, str))
 
     def test_attributes_user(self):
         self.assertTrue(isinstance(self.u1.email, str))
@@ -157,19 +156,19 @@ class TestPlaceClass(unittest.TestCase):
 
     def test_exception_user_name(self):
         with self.assertRaises(TypeError):
-            User("Jorge@gmail.com", 12, "Beritan")
+            User("Jorgea@gmail.com", 12, "Beritan")
 
     def test_exception_user_last_name(self):
         with self.assertRaises(TypeError):
-            User("Jorge@gmail.com", "Jorge", 12)
+            User("J@gmail.com", "Jorge", 12)
 
     def test_exception_user_first_name_none(self):
         with self.assertRaises(ValueError):
-            User("Jorge@gmail.com", "", "Beritan")
+            User("Jorg@gmail.com", "", "Beritan")
 
     def test_exception_user_last_name_none(self):
         with self.assertRaises(ValueError):
-            User("Jorge@gmail.com", "Jorge", "")
+            User("Jo@gmail.com", "Jorge", "")
 
     def test_exception_user_email(self):
         with self.assertRaises(TypeError):

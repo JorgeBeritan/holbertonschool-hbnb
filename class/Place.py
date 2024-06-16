@@ -86,8 +86,8 @@ class Place:
 
     @host_id.setter
     def host_id(self, host_id):
-        if type(host_id) is not uuid.UUID:
-            raise TypeError("Must be a unique host id")
+        if type(host_id) is not str:
+            raise TypeError("Must be a string")
         if host_id in self.__host_ids:
             raise ValueError("This Host Id is already exists")
         self.__host_ids.add(host_id)

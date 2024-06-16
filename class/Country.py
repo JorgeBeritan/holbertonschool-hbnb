@@ -28,3 +28,7 @@ class Country:
         if name is None:
             raise ValueError("Country name cannot be None")
         self.__name = name
+
+
+c1 = Country("UY")
+print(c1.name)
