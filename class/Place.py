@@ -9,7 +9,7 @@ class Place:
     __host_ids = set()
 
     def __init__(self, name, description, number_of_rooms, number_of_bathrooms, max_guest, price_per_night, latitude, longitude, host_id, city_id):
-        self.__id = uuid.uuid4()
+        self.__id = str(uuid.uuid4())
         self.__host_id = host_id
         self.name = name
         self.description = description
@@ -156,8 +156,8 @@ class Place:
     
     @city_id.setter
     def city_id(self, value):
-        if type(value) is not uuid.UUID:
-            raise TypeError("The id must be a uuid.UUID")
+        if type(value) is not str:
+            raise TypeError("The id must be a string")
         self.__city_id = value
     @amenity_id.setter
     def amenity_id(self, value):
@@ -170,3 +170,18 @@ class Place:
     @update_at.setter
     def update_at(self, value):
         self.__update_at = value
+
+    def to_dict(self):
+        return {
+            "ID": self.id,
+            "name": self.name,
+            "description": self.description,
+            "number_of_rooms": self.number_of_rooms,
+            "number_of_bathrooms": self.number_of_bathrooms,
+            "max_guest": self.max_guest,
+            "price_per_night": self.price_per_night,
+            "latitude": self.latitude,
+            "longitude": self.longitude,
+            "host_id": self.host_id,
+            "city_id": self.city_id
+        }
