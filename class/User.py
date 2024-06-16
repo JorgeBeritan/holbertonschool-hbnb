@@ -10,7 +10,7 @@ class User():
     __emails = set()
 
     def __init__(self, email, First_name, Last_name):
-        self.ID = uuid.uuid4()
+        self.__id = str(uuid.uuid4())
         self.email = email
         self.First_name = First_name
         self.Last_name = Last_name
@@ -19,8 +19,8 @@ class User():
         #self.Update_at = Update_at
 
     @property
-    def ID(self):
-        return self.__ID
+    def id(self):
+        return self.__id
     
     @property
     def email(self):
@@ -42,9 +42,9 @@ class User():
     def update_at(self):
         return self.__update_at
     
-    @ID.setter
-    def ID(self, ID):
-        self.__ID = ID
+    @id.setter
+    def id(self, id):
+        self.__id = id
     
     @email.setter
     def email(self, email):
@@ -72,3 +72,11 @@ class User():
         elif Last_name == "":
             raise ValueError("Last name is requerid")
         self.__Last_name = Last_name
+
+    def to_dict(self):
+        return {
+            "ID": self.__id,
+            "email": self.__email,
+            "first_name": self.__First_name,
+            "Last_name": self.__Last_name
+        }

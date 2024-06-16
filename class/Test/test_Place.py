@@ -117,16 +117,16 @@ class TestPlaceClass(unittest.TestCase):
         self.assertTrue(isinstance(self.p1.update_at, datetime.datetime))
 
     def test_id(self):
-        self.assertTrue(isinstance(self.p1.id, uuid.UUID))
+        self.assertTrue(isinstance(self.p1.id, str))
 
     def test_host_id(self):
-        self.assertTrue(isinstance(self.p1.host_id, uuid.UUID))
+        self.assertTrue(isinstance(self.p1.host_id, str))
 
     def test_city_id(self):
-        self.assertTrue(isinstance(self.p1.city_id, uuid.UUID))
+        self.assertTrue(isinstance(self.p1.city_id, str))
 
     def test_amenity_id(self):
-        self.assertTrue(isinstance(self.p1.amenity_id, uuid.UUID))
+        self.assertTrue(isinstance(self.p1.amenity_id, str))
 
     def test_unique_id_place(self):
         self.assertTrue(self.p1.id, self.p2.id)
