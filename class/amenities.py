@@ -28,3 +28,9 @@ class Amenity:
             raise ValueError("Name is required")
         
         self.__name = name
+
+    def to_dict(self):
+        return{
+            "ID": self.id,
+            "name": self.name
+        }
