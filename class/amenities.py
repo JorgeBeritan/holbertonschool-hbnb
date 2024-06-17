@@ -28,7 +28,3 @@ class Amenity:
             raise ValueError("Name is required")
         
         self.__name = name
-
-
-a1 = Amenity("Hola")
-print(a1.name)
